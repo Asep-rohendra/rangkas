@@ -4,14 +4,15 @@
 	<title>Member</title>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
+	
 	<div class="col-md-12">
 		<h1>Pasar Rangkas</h1>
 	</div>
 	<div class="col-md-3">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				Selamat Datang $nama;
+				Adnda Masuk Sebagai : <?php echo($email);?>
 			</div>
 			<div class="panel-body">
 				<ul class="nav">
@@ -22,7 +23,10 @@
 						<a href=""><i class="glyphicon glyphicon-user"></i> Barang Anda</a>
 					</li>
 					<li>
-						<a href=""><i class="glyphicon glyphicon-sign-in"></i> Penawaran</a>
+						<a href=""><i class="glyphicon glyphicon-pencil"></i> Penawaran</a>
+					</li>
+					<li class="panel-footer">
+						<a href="<?php echo site_url('utama/logout');?>"><i class="glyphicon glyphicon-off"></i> Logout</a>
 					</li>
 				</ul>
 			</div>

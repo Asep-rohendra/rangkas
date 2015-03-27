@@ -33,7 +33,7 @@
 			}
 			else
 			{
-				return null;
+				return false;
 			}
 		}
 

@@ -21,7 +21,8 @@
 		<h1 class="text-center">
 			<font color="red">Pasar </font><font color="black">Rangkas</font>
 		</h1>
-			<hr> </hr>
+			<hr></hr>
+			<?php echo $this->session->flashdata('Pesan');?>
 		</div>
 		<div class="col-md-4 column">
 			

@@ -1,4 +1,5 @@
 <?php
+session_start();
     class Utama extends CI_Controller
     {
         public function __construct()
@@ -62,13 +63,29 @@
                 'kontak' =>$this->input->post('kontak'), 
                 'noKTP' =>$this->input->post('noKTP') 
                 );
-            $this->dataMember->addMember($data);
-            $data['member']=$this->session->set_userdata($data);
-            $this->load->view('head');
-            $this->load->view('member',$data);
+            $cek=$this->dataMember->cekMember($email);
+                if ($cek) {
+                    $this->session->flashdata('pesan','Anda tidak dapat mendaftar dengan email yang sama!');
+                    redirect('utama');
+                } 
+                else
+                {
+                   $this->dataMember->addMember($data);
+                    $this->session->set_userdata('member',$data);
+                    $session=$this->session->userdata('member');
+                    $data['email']=$session['email'];
+                    $this->load->view('head');
+                    $this->load->view('member',$data); 
+                }   
+            
         }
         public function cekDaftar($email)
         {
             $email=$this->input->post('email');
+        }
+        public function logout()
+        {
+            session_destroy($this->session->userdata('member'));
+            redirect('utama');
         }
     }
